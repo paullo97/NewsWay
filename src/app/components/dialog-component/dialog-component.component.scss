@@ -1,0 +1,40 @@
+.dialog
+{
+  padding: 15px;
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      border-radius: 15px;
+    }
+
+    .title
+    {
+      font-size: 30px;
+      font-weight: 700;
+    }
+  }
+
+  .information
+  {
+    justify-items: start;
+    font-size: 10px;
+
+    p
+    {
+      padding: 2px;
+      margin: 2px;
+    }
+
+  }
+
+  .content
+  {
+    margin-top: 30px;
+    font-size: 14px;
+    text-indent: 5%;
+  }
+
+}
