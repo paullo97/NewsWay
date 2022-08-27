@@ -1,0 +1,10 @@
+<div class="card">
+  <img [src]="article?.urlToImage" width="30%" height="20%">
+  <div class="info">
+    <p class="info-title">{{ article?.title}}</p>
+    <p class="info-author">Author: {{ article?.author }}</p>
+    <p class="info-description">{{ article?.description }}</p>
+    <p class="info-publish">Published in {{ article?.publishedAt | date }}</p>
+    <p class="info-available">Available in<span>{{ article?.url}}</span></p>
+  </div>
+</div>
