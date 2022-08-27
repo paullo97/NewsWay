@@ -45,3 +45,17 @@
     }
   }
 }
+
+
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #e6e6e6 radial-gradient(circle, transparent 1%, #cfcfcf 1%) center/15000%;
+}
+.ripple:active {
+  background-color: #ffffff;
+  background-size: 100%;
+  transition: background 0s;
+}
