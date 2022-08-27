@@ -10,4 +10,9 @@ export class ListComponent
 {
     @Input()
     public list: Array<Article> = [];
+
+    public openDialog(article: Article): void
+    {
+      console.log(article.content);
+    }
 }
