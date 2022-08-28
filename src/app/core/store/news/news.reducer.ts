@@ -3,8 +3,7 @@ import { loadNews, loadNewsError, loadNewsSuccess } from './news.actions';
 import { NewsStore } from './news.store';
 
 export const initialState: Partial<NewsStore> = {
-    loading: true,
-    response: undefined
+    loading: true
 };
 
 const reducer: ActionReducer<Partial<NewsStore>, Action> = createReducer(

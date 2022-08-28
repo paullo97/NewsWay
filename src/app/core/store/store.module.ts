@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { StoreModule as NGStoreModule } from '@ngrx/store';
+import { StoreModule as NgStoreModule } from '@ngrx/store';
+import { storeTools } from 'src/environments/constants';
 import { reducers } from './store';
 
 @NgModule({
   imports: [
-    NGStoreModule.forRoot(reducers),
+    NgStoreModule.forRoot(reducers),
+    ...storeTools
   ]
 })
 export class StoreModule

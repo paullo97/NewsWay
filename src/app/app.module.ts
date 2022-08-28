@@ -9,9 +9,6 @@ import { AppComponent } from './app.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { ListComponent } from './components/list/list.component';
 import { CoreModule } from './core/core.module';
-import { StoreModule } from '@ngrx/store';
-
-
 
 @NgModule({
   declarations: [
@@ -25,8 +22,7 @@ import { StoreModule } from '@ngrx/store';
     CoreModule,
     BrowserAnimationsModule,
     MatRippleModule,
-    MatDialogModule,
-    StoreModule.forRoot({}, {})
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

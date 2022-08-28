@@ -1,3 +1,5 @@
+import { ModuleWithProviders } from '@angular/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { languageTypes, searchInTypes, sortByTypes } from 'src/app/core/services/models/response.model';
 
 /** Api Key to usage in request to NEWS API */
@@ -24,3 +26,12 @@ export function toQueryParam(map: Record<string, any>): string
 {
     return new URLSearchParams(map).toString();
 }
+
+
+/** Usage to Enable DevTools to see Store Redux */
+export const storeTools: Array<ModuleWithProviders<any>> = [
+  StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      name: 'News Way'
+  })
+];
