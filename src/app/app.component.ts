@@ -15,7 +15,9 @@ export class AppComponent
 	public loading$: Observable<boolean> = this.store.select(getNewsLoading);
 
 	constructor(private store: Store<NewsStore>,)
-	{ }
+	{
+    // this.store.dispatch(loadNews());
+  }
 
 	public response: Response = {
 		articles: [

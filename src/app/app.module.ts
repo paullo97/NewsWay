@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { ListComponent } from './components/list/list.component';
 import { CoreModule } from './core/core.module';
-import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     MatRippleModule,
     MatDialogModule,
-    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

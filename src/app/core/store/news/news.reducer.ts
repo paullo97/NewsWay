@@ -19,8 +19,7 @@ const reducer: ActionReducer<Partial<NewsStore>, Action> = createReducer(
     })),
     on(loadNewsError, (state, action) => ({
       ...state,
-      loading: false,
-      error: action.error
+      loading: false
     }))
 );
 

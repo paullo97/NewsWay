@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ErrorPayload, Response } from '../../services/models/response.model';
+import { Response } from '../../services/models/response.model';
 import { storeTag } from './news.store';
 
 export const loadNews = createAction(
@@ -14,8 +14,5 @@ export const loadNewsSuccess = createAction(
 )
 
 export const loadNewsError = createAction(
-  `${storeTag} Load News Error`,
-  props<{
-    error: ErrorPayload;
-  }>()
+  `${storeTag} Load News Error`
 );
