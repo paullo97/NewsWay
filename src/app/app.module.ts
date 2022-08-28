@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { ListComponent } from './components/list/list.component';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -24,7 +25,8 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     BrowserAnimationsModule,
     MatRippleModule,
-    MatDialogModule
+    MatDialogModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
