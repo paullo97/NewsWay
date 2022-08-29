@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Response } from './core/services/models/response.model';
+import { loadNews } from './core/store/news/news.actions';
 import { getNewsLoading } from './core/store/news/news.selectors';
 import { NewsStore } from './core/store/news/news.store';
 
@@ -16,7 +17,7 @@ export class AppComponent
 
 	constructor(private store: Store<NewsStore>,)
 	{
-    // this.store.dispatch(loadNews());
+    this.store.dispatch(loadNews());
   }
 
 	public response: Response = {
