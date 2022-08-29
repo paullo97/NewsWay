@@ -9,13 +9,10 @@ import { loadNews, loadNewsSuccess } from '../store/news/news.actions';
 @Injectable()
 export class NewsEffect
 {
-  deleteAffiliate$ = createEffect(() => this.actions$.pipe(
+  getNews$ = createEffect(() => this.actions$.pipe(
     ofType(loadNews),
     switchMap(() => this.service.getNews()),
-    map((response: Response) =>
-    {
-      return loadNewsSuccess({ articles: response });
-    }),
+    map((response: Response) => loadNewsSuccess({ articles: response })),
     catchError(() => EMPTY)
   ));
 

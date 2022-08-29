@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { EffectsModule } from './effects/effects.module';
 import { ServicesModule } from './services/services.module';

@@ -13,6 +13,7 @@ export class NewsService
 
     public getNews(): Observable<Response>
     {
+      console.log('Service');
       // encodeURI() Use in paramether q
       return of({
         articles: [
