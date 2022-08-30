@@ -1,20 +1,17 @@
 .container {
-  display: flex;
-  justify-content: center;
+    margin-right: 2%;
+    margin-left: 5%;
+    .body {
+        .title {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+            border-bottom: 5px solid black;
+        }
 
-  .body {
-    flex-direction: column;
-    width: 80%;
-
-    .title {
-      display: flex;
-      justify-content: center;
-      padding-bottom: 10px;
-      border-bottom: 5px solid black;
+        .list {
+            padding: 15px 50px;
+            overflow: auto;
+        }
     }
-
-    .list {
-      padding: 15px 50px;
-    }
-  }
 }
