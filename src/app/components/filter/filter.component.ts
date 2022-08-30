@@ -12,7 +12,7 @@ import { loadNews } from './../../core/store/news/news.actions';
 })
 export class FilterComponent
 {
-    public keyString: string = '';
+    public keyString: string = 'Brasil';
     public titleEnable: boolean = false;
     public contentEnable: boolean = false;
     public descriptionEnable: boolean = false;
@@ -57,6 +57,8 @@ export class FilterComponent
             return;
         }
 
+        console.log(this.domains, this.excludeDomains);
+
         const {end, start} = this.range.value;
         this.store.dispatch(loadNews({
             request: {
@@ -65,8 +67,8 @@ export class FilterComponent
                 searchIn: this.searchIn(),
                 domains: this.domains,
                 excludeDomains: this.excludeDomains,
-                from: start?.toDateString(),
-                to: end?.toDateString(),
+                from: start?.toISOString(),
+                to: end?.toISOString(),
                 sortBy: this.sortBy
             }
         }))
