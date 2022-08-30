@@ -1,5 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { RequestModel, Response } from '../../services/models/response.model';
+import { languagesModel } from '../../services/models/language.model';
+import { RequestModel } from '../../services/models/request.model';
+import { Response } from '../../services/models/response.model';
 import { storeTag } from './news.store';
 
 export const loadNews = createAction(
@@ -18,4 +20,14 @@ export const loadNewsSuccess = createAction(
 
 export const loadNewsError = createAction(
   `${storeTag} Load Error`
+);
+
+export const loadLanguages = createAction(
+    `${storeTag} Load Languages to search`
+);
+export const loadLanguagesSuccess = createAction(
+    `${storeTag} Load Languages to Search Success`,
+    props<{
+        languages: Array<languagesModel>;
+    }>()
 );

@@ -12,3 +12,8 @@ export const getArticles = createSelector(
     getNewsState,
     (store: NewsStore) => store.response.articles
 );
+
+export const getLanguages = createSelector(
+    getNewsState,
+    (store: NewsStore) => store.languages
+);

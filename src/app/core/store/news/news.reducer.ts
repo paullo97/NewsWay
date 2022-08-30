@@ -1,5 +1,5 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { loadNews, loadNewsError, loadNewsSuccess } from './news.actions';
+import { loadLanguages, loadLanguagesSuccess, loadNews, loadNewsError, loadNewsSuccess } from './news.actions';
 import { NewsStore } from './news.store';
 
 export const initialState: Partial<NewsStore> = {
@@ -20,6 +20,15 @@ const reducer: ActionReducer<Partial<NewsStore>, Action> = createReducer(
     on(loadNewsError, (state, action) => ({
       ...state,
       loading: false
+    })),
+    on(loadLanguages, (state) => ({
+        ...state,
+        loading: true
+    })),
+    on(loadLanguagesSuccess, (state, action) => ({
+        ...state,
+        loading: false,
+        languages: action.languages
     }))
 );
 
