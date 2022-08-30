@@ -18,6 +18,10 @@ export class AppComponent
 
     constructor(private store: Store<NewsStore>)
     {
-        this.store.dispatch(loadNews());
+        this.store.dispatch(loadNews({
+            request: {
+                q: 'Brasil'
+            }
+        }));
     }
 }
