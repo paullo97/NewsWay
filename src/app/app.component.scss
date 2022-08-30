@@ -24,6 +24,7 @@
 
 .toolbar img {
     margin: 0 16px;
+    border-radius: 5px;
 }
 
 
@@ -31,11 +32,16 @@
     display: flex;
     padding-top: 15px;
     margin-top: 5%;
-}
 
-.spinner
-{
-    display: flex;
-    justify-content: center;
-    margin-top: 20%;
+
+    .empty-list {
+        margin: 15% 20%;
+    }
+
+    .spinner
+    {
+        display: flex;
+        justify-content: center;
+        margin-top: 20%;
+    }
 }
