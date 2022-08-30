@@ -1,6 +1,7 @@
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FullArticleService } from './full-article.service';
 import { NewsService } from './news.service';
 
 
@@ -9,7 +10,8 @@ import { NewsService } from './news.service';
         HttpClientModule
     ],
     providers: [
-      NewsService
+      NewsService,
+      FullArticleService
     ]
 })
 export class ServicesModule
