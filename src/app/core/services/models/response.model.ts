@@ -1,4 +1,3 @@
-
 export interface Source
 {
     id: string | null;
@@ -30,18 +29,4 @@ export interface ErrorPayload
 export interface ActionErrorPayload
 {
     error: ErrorPayload;
-}
-
-
-/** Models to send Request */
-export interface RequestModel
-{
-    q: string;
-    searchIn?: string;
-    domains?: string;
-    excludeDomains?: string;
-    from?: string;
-    to?: string;
-    language?: string;
-    sortBy?: string;
 }
