@@ -16,7 +16,9 @@ export const api = {
         language?: string,
         sortBy?: string,
         pageSize: number,
-        apiKey: string
+        apiKey: string,
+        domains?: string,
+        excludeDomains?: string
       }) => `${baseUrl}${toQueryParam(query)}`
   }
 }

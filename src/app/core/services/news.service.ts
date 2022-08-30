@@ -35,7 +35,9 @@ export class NewsService
             ...(!!request?.searchIn && { searchIn: request.searchIn}),
             ...(!!request?.from && { from: request.from }),
             ...(!!request?.to && { to: request.to }),
-            ...(!!request?.sortBy && { sortBy: request.sortBy})
+            ...(!!request?.sortBy && { sortBy: request.sortBy}),
+            ...(!!request?.domains && { domains: request.domains }),
+            ...(!!request?.excludeDomains && { excludeDomains: request.excludeDomains })
         }))
     }
 }
