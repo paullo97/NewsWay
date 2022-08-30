@@ -18,6 +18,7 @@ export class AppComponent
 
     constructor(private store: Store<NewsStore>)
     {
+        /** To the First Search, for the screen to have some content */
         this.store.dispatch(loadNews({
             request: {
                 q: 'Brasil'
