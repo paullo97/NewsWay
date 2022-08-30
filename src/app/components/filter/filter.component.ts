@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { languagesModel } from 'src/app/core/services/models/language.model';
+import { getLanguages, getNewsLoading } from 'src/app/core/store/news/news.selectors';
 import { NewsStore } from 'src/app/core/store/news/news.store';
 import { loadNews } from './../../core/store/news/news.actions';
 
@@ -12,6 +15,9 @@ import { loadNews } from './../../core/store/news/news.actions';
 })
 export class FilterComponent
 {
+    public loading$: Observable<boolean> = this.store.select(getNewsLoading);
+    public languages$: Observable<Array<languagesModel>> = this.store.select(getLanguages);
+
     public keyString: string = 'Brasil';
     public titleEnable: boolean = false;
     public contentEnable: boolean = false;
@@ -25,23 +31,6 @@ export class FilterComponent
         start: new FormControl<Date | null>(null),
         end: new FormControl<Date | null>(null),
     });
-
-    public value: string = '';
-    public languages: Array<{ value: string; viewValue: string; }> = [
-        { value: 'ar', viewValue: 'Arabic' },
-        { value: 'de', viewValue: 'German' },
-        { value: 'en', viewValue: 'English' },
-        { value: 'es', viewValue: 'Spanish' },
-        { value: 'fr', viewValue: 'French' },
-        { value: 'he', viewValue: 'Hebrew' },
-        { value: 'it', viewValue: 'Italian' },
-        { value: 'nl', viewValue: 'Dutch' },
-        { value: 'no', viewValue: 'Norwegian' },
-        { value: 'pt', viewValue: 'Portuguese' },
-        { value: 'ru', viewValue: 'Russian' },
-        { value: 'sv', viewValue: 'Swedish' },
-        { value: 'zh', viewValue: 'Chinese' }
-    ];
 
     constructor(
         private readonly _snackBar: MatSnackBar,
@@ -57,12 +46,10 @@ export class FilterComponent
             return;
         }
 
-        console.log(this.domains, this.excludeDomains);
-
         const {end, start} = this.range.value;
         this.store.dispatch(loadNews({
             request: {
-                q: this.keyString,
+                q: this.keyString.split('').length > 1 ? '"' + this.keyString +'"' : this.keyString,
                 language: this.languageSelect,
                 searchIn: this.searchIn(),
                 domains: this.domains,
@@ -83,11 +70,11 @@ export class FilterComponent
         }
         if (this.contentEnable)
         {
-            aux = aux + 'contect';
+            aux = aux + ',content';
         }
         if (this.descriptionEnable)
         {
-            aux = aux + 'description';
+            aux = aux + ',description';
         }
         return aux;
     }

@@ -39,7 +39,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Languages</mat-label>
         <mat-select required [(ngModel)]="languageSelect">
-            <mat-option *ngFor="let lg of languages" [value]="lg.value">
+            <mat-option *ngFor="let lg of (languages$ | async)" [value]="lg.value">
                 {{lg.viewValue}}
             </mat-option>
         </mat-select>
@@ -47,11 +47,13 @@
 
     <label>Sort By</label>
     <mat-radio-group aria-label="Sort By" class="sortby" [(ngModel)]="sortBy">
-        <mat-radio-button value="publishedAt">publishedAt</mat-radio-button>
-        <mat-radio-button value="relevancy">relevancy</mat-radio-button>
-        <mat-radio-button value="popularity">popularity</mat-radio-button>
+        <mat-radio-button value="publishedAt">Published At</mat-radio-button>
+        <mat-radio-button value="relevancy">Relevancy</mat-radio-button>
+        <mat-radio-button value="popularity">Popularity</mat-radio-button>
     </mat-radio-group>
 
-
-    <button mat-raised-button color="primary" (click)="search()">Filter</button>
+    <div class="spinner" *ngIf="(loading$ | async)">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+    <button mat-raised-button color="primary" (click)="search()" *ngIf="(loading$ | async) === false">Filter</button>
 </div>
