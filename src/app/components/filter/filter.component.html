@@ -1,3 +1,57 @@
 <div class="filter">
-  teste
+    <label class="title">Filter</label>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Word or Phrase</mat-label>
+        <input matInput placeholder="Ex. Apple" [(ngModel)]="keyString">
+    </mat-form-field>
+
+    <label>SearchIn</label>
+    <section class="searchIn">
+        <mat-checkbox [(ngModel)]="titleEnable">title</mat-checkbox>
+        <mat-checkbox [(ngModel)]="contentEnable">content</mat-checkbox>
+        <mat-checkbox [(ngModel)]="descriptionEnable">description</mat-checkbox>
+    </section>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>domains</mat-label>
+        <input matInput placeholder="Ex. https://www.discoverybrasil.com/" [(ngModel)]="domains">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Exclude Domains</mat-label>
+        <input matInput placeholder="Ex. https://www.bbc.com/" [(ngModel)]="excludeDomains">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="date">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Languages</mat-label>
+        <mat-select required [(ngModel)]="languageSelect">
+            <mat-option *ngFor="let lg of languages" [value]="lg.value">
+                {{lg.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <label>Sort By</label>
+    <mat-radio-group aria-label="Sort By" class="sortby" [(ngModel)]="sortBy">
+        <mat-radio-button value="publishedAt">publishedAt</mat-radio-button>
+        <mat-radio-button value="relevancy">relevancy</mat-radio-button>
+        <mat-radio-button value="popularity">popularity</mat-radio-button>
+    </mat-radio-group>
+
+
+    <button mat-raised-button color="primary" (click)="search()">Filter</button>
 </div>
