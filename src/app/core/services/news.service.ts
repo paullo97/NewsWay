@@ -36,6 +36,10 @@ export class NewsService
         }))
     }
 
+    /**
+     * It returns an observable of an array of languagesModel objects
+     * @returns An observable of an array of languagesModel objects.
+     */
     public getLanguages(): Observable<Array<languagesModel>>
     {
         return of([
