@@ -1,9 +1,12 @@
 import { createAction, props } from '@ngrx/store';
-import { Response } from '../../services/models/response.model';
+import { RequestModel, Response } from '../../services/models/response.model';
 import { storeTag } from './news.store';
 
 export const loadNews = createAction(
-  `${storeTag} Load News`
+  `${storeTag} Load News`,
+    props<{
+        request?: RequestModel;
+    }>()
 );
 
 export const loadNewsSuccess = createAction(
@@ -14,5 +17,5 @@ export const loadNewsSuccess = createAction(
 )
 
 export const loadNewsError = createAction(
-  `${storeTag} Load News Error`
+  `${storeTag} Load Error`
 );

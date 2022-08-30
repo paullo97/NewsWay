@@ -11,7 +11,7 @@ export class NewsEffect
 {
   getNews$ = createEffect(() => this.actions$.pipe(
     ofType(loadNews),
-    switchMap(() => this.service.getNews()),
+    switchMap((response) => this.service.getNews(response.request)),
     map((response: Response) => loadNewsSuccess({ articles: response })),
     catchError(() => EMPTY)
   ));
