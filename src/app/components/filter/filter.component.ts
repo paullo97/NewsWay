@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { NewsStore } from 'src/app/core/store/news/news.store';
+import { loadNews } from './../../core/store/news/news.actions';
 
 @Component({
     selector: 'app-filter',
@@ -26,20 +27,20 @@ export class FilterComponent
     });
 
     public value: string = '';
-    public languages: Array<{value: string; viewValue: string;}> = [
-        {value: 'ar', viewValue: 'Arabic'},
-        {value: 'de', viewValue: 'German'},
-        {value: 'en', viewValue: 'English'},
-        {value: 'es', viewValue: 'Spanish'},
-        {value: 'fr', viewValue: 'French'},
-        {value: 'he', viewValue: 'Hebrew'},
-        {value: 'it', viewValue: 'Italian'},
-        {value: 'nl', viewValue: 'Dutch'},
-        {value: 'no', viewValue: 'Norwegian'},
-        {value: 'pt', viewValue: 'Portuguese'},
-        {value: 'ru', viewValue: 'Russian'},
-        {value: 'sv', viewValue: 'Swedish'},
-        {value: 'zh', viewValue: 'Chinese'}
+    public languages: Array<{ value: string; viewValue: string; }> = [
+        { value: 'ar', viewValue: 'Arabic' },
+        { value: 'de', viewValue: 'German' },
+        { value: 'en', viewValue: 'English' },
+        { value: 'es', viewValue: 'Spanish' },
+        { value: 'fr', viewValue: 'French' },
+        { value: 'he', viewValue: 'Hebrew' },
+        { value: 'it', viewValue: 'Italian' },
+        { value: 'nl', viewValue: 'Dutch' },
+        { value: 'no', viewValue: 'Norwegian' },
+        { value: 'pt', viewValue: 'Portuguese' },
+        { value: 'ru', viewValue: 'Russian' },
+        { value: 'sv', viewValue: 'Swedish' },
+        { value: 'zh', viewValue: 'Chinese' }
     ];
 
     constructor(
@@ -50,15 +51,42 @@ export class FilterComponent
 
     public search(): void
     {
-        if(this.keyString.length === 0)
+        if (this.keyString.length === 0)
         {
-            this._snackBar.open('Please, include word or Phrase to search', '', {duration: 3000});
+            this._snackBar.open('Please, include word or Phrase to search', '', { duration: 3000 });
             return;
         }
-        if(!this.titleEnable && !this.contentEnable && !this.descriptionEnable)
+
+        const {end, start} = this.range.value;
+        this.store.dispatch(loadNews({
+            request: {
+                q: this.keyString,
+                language: this.languageSelect,
+                searchIn: this.searchIn(),
+                domains: this.domains,
+                excludeDomains: this.excludeDomains,
+                from: start?.toDateString(),
+                to: end?.toDateString(),
+                sortBy: this.sortBy
+            }
+        }))
+    }
+
+    private searchIn(): string
+    {
+        let aux: string = '';
+        if (this.titleEnable)
         {
-            this._snackBar.open('Please, select one option', '', {duration: 3000});
-            return;
+            aux = aux + 'title';
         }
+        if (this.contentEnable)
+        {
+            aux = aux + 'contect';
+        }
+        if (this.descriptionEnable)
+        {
+            aux = aux + 'description';
+        }
+        return aux;
     }
 }
