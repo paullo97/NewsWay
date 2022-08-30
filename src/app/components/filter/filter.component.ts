@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 import { languagesModel } from 'src/app/core/services/models/language.model';
 import { getLanguages, getNewsLoading } from 'src/app/core/store/news/news.selectors';
 import { NewsStore } from 'src/app/core/store/news/news.store';
-import { loadNews } from './../../core/store/news/news.actions';
+import { loadLanguages, loadNews } from './../../core/store/news/news.actions';
 
 @Component({
     selector: 'app-filter',
     templateUrl: './filter.component.html',
     styleUrls: [ './filter.component.scss' ]
 })
-export class FilterComponent
+export class FilterComponent implements OnInit
 {
     public loading$: Observable<boolean> = this.store.select(getNewsLoading);
     public languages$: Observable<Array<languagesModel>> = this.store.select(getLanguages);
@@ -38,8 +38,14 @@ export class FilterComponent
     )
     { }
 
+    public ngOnInit(): void
+    {
+        this.store.dispatch(loadLanguages())
+    }
+
     public search(): void
     {
+        /* Checking if the keyString is empty, if it is, it will show a snackbar with a message. */
         if (this.keyString.length === 0)
         {
             this._snackBar.open('Please, include word or Phrase to search', '', { duration: 3000 });
@@ -47,6 +53,7 @@ export class FilterComponent
         }
 
         const {end, start} = this.range.value;
+        /* Dispatching the loadNews action with the request object as a payload. */
         this.store.dispatch(loadNews({
             request: {
                 q: this.keyString.split('').length > 1 ? '"' + this.keyString +'"' : this.keyString,
@@ -58,9 +65,13 @@ export class FilterComponent
                 to: end?.toISOString(),
                 sortBy: this.sortBy
             }
-        }))
+        }));
     }
 
+    /**
+     * It takes a string and returns a string
+     * @returns The string of the fields that are enabled.
+     */
     private searchIn(): string
     {
         let aux: string = '';

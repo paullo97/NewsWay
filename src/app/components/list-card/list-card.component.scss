@@ -1,49 +1,44 @@
-.card
-{
-  display: flex;
-  margin: 15px 0;
-  background-color: #e6e6e6;
-  border-radius: 10px;
-  padding: 15px;
+@import '../../../assets/colors.scss';
 
-  img
-  {
-    border-radius: 15px;
-    width: 200px;
-    object-fit: cover;
-  }
+.card {
+    display: flex;
+    margin: 15px 0;
+    background-color: $gray;
+    border-radius: 10px;
+    padding: 15px;
 
-  .info
-  {
-    margin: 0 10px;
-
-    p
-    {
-      padding: 2px;
-      margin: 2px;
+    img {
+        border-radius: 15px;
+        width: 200px;
+        object-fit: cover;
     }
 
-    &-title
-    {
-      font-weight: 700;
-      text-transform: capitalize;
-      font-size: 18px;
-    }
+    .info {
+        margin: 0 10px;
 
-    &-description
-    {
-      font-size: 12px;
-    }
+        p {
+            padding: 2px;
+            margin: 2px;
+        }
 
-    &-author
-    {
-      font-weight: 700;
-      font-size: 14px;
-    }
+        &-title {
+            text-transform: capitalize;
+            font-weight: 700;
+            font-size: 18px;
+        }
 
-    &-publish, &-available
-    {
-      font-size: 10px;
+        &-description {
+            font-size: 12px;
+        }
+
+        &-author {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        &-publish,
+        &-available {
+            font-size: 10px;
+        }
     }
-  }
 }
