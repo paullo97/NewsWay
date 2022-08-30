@@ -7,3 +7,8 @@ export const getNewsLoading = createSelector(
     getNewsState,
     (store: NewsStore) => store.loading
 );
+
+export const getArticles = createSelector(
+    getNewsState,
+    (store: NewsStore) => store.response.articles
+);
