@@ -26,7 +26,7 @@ export class FilterComponent implements OnInit
     public excludeDomains: string = '';
     public languageSelect: string = 'pt';
     public sortBy: string = 'publishedAt';
-
+    public aux: string = '';
     public range = new FormGroup({
         start: new FormControl<Date | null>(null),
         end: new FormControl<Date | null>(null),
@@ -77,19 +77,18 @@ export class FilterComponent implements OnInit
      */
     private searchIn(): string
     {
-        let aux: string = '';
         if (this.titleEnable)
         {
-            aux = aux + 'title';
+            this.aux = this.aux + 'title';
         }
         if (this.contentEnable)
         {
-            aux = aux + ',content';
+            this.aux = this.aux + ',content';
         }
         if (this.descriptionEnable)
         {
-            aux = aux + ',description';
+            this.aux = this.aux + ',description';
         }
-        return aux;
+        return this.aux;
     }
 }

@@ -33,9 +33,7 @@ export class ListComponent implements OnInit
     public openDialog(item: Article): void
     {
         this.dialog.open(DialogComponentComponent, {
-            data: {
-                article: item
-            }
+            data: item
         });
     }
 

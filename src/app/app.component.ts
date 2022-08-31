@@ -13,6 +13,7 @@ import { NewsStore } from './core/store/news/news.store';
 })
 export class AppComponent
 {
+    public title: string = 'Welcome to NewsWay - the new way to get news';
     public loading$: Observable<boolean> = this.store.select(getNewsLoading);
     public articles$: Observable<Array<Article>> = this.store.select(getArticles);
 

@@ -13,21 +13,19 @@ import { Article } from './../../core/services/models/response.model';
 })
 export class DialogComponentComponent implements OnInit
 {
-    public article: Article;
+    public article: Article | undefined;
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) public data: any,
-        private readonly store: Store<FullArticleStore>,
-        private readonly dialog: MatDialog
+        @Inject(MAT_DIALOG_DATA) public data: Article,
+        private store: Store<FullArticleStore>,
+        private dialog: MatDialog
     )
-    {
-        this.article = this.data.article;
-    }
+    { }
 
     public ngOnInit(): void
     {
-        this.article = this.data.article;
-        this.store.dispatch(loadFullArticle({ url: this.article.url }));
+        this.article = this.data;
+        this.store.dispatch(loadFullArticle({ url: this.article?.url || '' }));
     }
 
    /**
@@ -39,7 +37,7 @@ export class DialogComponentComponent implements OnInit
             {
                 disableClose: true,
                 data: {
-                    url: this.article.url
+                    url: this.article?.url
                 }
             }
         );
