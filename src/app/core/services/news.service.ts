@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
+import { delay, map, Observable, of } from 'rxjs';
 import { api, ApiKey } from 'src/environments/constants';
+import { adapterContent } from '../adapter/content.adapter';
 import { languagesModel } from './models/language.model';
 import { RequestModel } from './models/request.model';
 import { Response } from './models/response.model';
@@ -10,7 +11,8 @@ import { Response } from './models/response.model';
 export class NewsService
 {
     constructor(
-        private readonly http: HttpClient
+        private readonly http: HttpClient,
+        private readonly adapter: adapterContent
     )
     { }
 
@@ -33,7 +35,9 @@ export class NewsService
             ...(!!request?.sortBy && { sortBy: request.sortBy}),
             ...(!!request?.domains && { domains: request.domains }),
             ...(!!request?.excludeDomains && { excludeDomains: request.excludeDomains })
-        }))
+        })).pipe(
+            map((response) => this.adapter.contentShort(response))
+        )
     }
 
     /**
