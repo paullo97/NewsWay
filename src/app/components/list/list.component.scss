@@ -1,3 +1,5 @@
+@import '../../../assets/colors.scss';
+
 .container {
     margin-right: 2%;
     margin-left: 5%;
@@ -7,7 +9,7 @@
             display: flex;
             justify-content: center;
             padding-bottom: 10px;
-            border-bottom: 5px solid black;
+            border-bottom: 5px solid $black;
         }
 
         .list {

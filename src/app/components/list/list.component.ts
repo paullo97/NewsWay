@@ -18,6 +18,9 @@ export class ListComponent implements OnInit
     constructor(private readonly dialog: MatDialog)
     { }
 
+    /**
+     * It refreshes the header height.
+     */
     public ngOnInit(): void
     {
         this.refreshHeaderHeight()
