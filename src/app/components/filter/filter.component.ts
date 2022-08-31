@@ -38,6 +38,9 @@ export class FilterComponent implements OnInit
     )
     { }
 
+    /**
+     * > Dispatching an action to the store to load the languages
+     */
     public ngOnInit(): void
     {
         this.store.dispatch(loadLanguages())

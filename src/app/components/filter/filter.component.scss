@@ -60,7 +60,7 @@
     ::ng-deep.mat-raised-button,
     .mat-flat-button {
         background-color: $primary;
-        color: white;
+        color: $white;
     }
 
     ::ng-deep.mat-progress-spinner circle,
