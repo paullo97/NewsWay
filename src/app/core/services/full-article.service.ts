@@ -12,7 +12,6 @@ export class FullArticleService
 
     public getFullArticle(url: string): Observable<any>
     {
-        console.log('passou');
         return this.http.jsonp(url, 'source');
     }
 }
