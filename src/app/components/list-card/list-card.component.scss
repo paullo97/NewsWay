@@ -1,6 +1,7 @@
 @import '../../../assets/colors.scss';
 
 .card {
+    cursor: pointer;
     display: flex;
     margin: 15px 0;
     background-color: $gray;
@@ -14,7 +15,11 @@
     }
 
     .info {
-        margin: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        margin: 0 0 0 30px;
 
         p {
             padding: 2px;
