@@ -1,13 +1,19 @@
+@import '../../../assets/colors.scss';
+
 .dialog {
     padding: 15px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
 
     .header {
         display: flex;
         flex-direction: column;
         align-items: center;
 
+
         img {
             border-radius: 15px;
+            width: 100%;
         }
 
         .title {
@@ -25,12 +31,26 @@
             margin: 2px;
         }
 
+        .available
+        {
+            color: $blue;
+            cursor: pointer;
+        }
+
     }
 
     .content {
         margin-top: 30px;
         font-size: 14px;
         text-indent: 5%;
+
+        .warn
+        {
+            margin-top: 2%;
+            color: $secondary;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 
 }
