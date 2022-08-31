@@ -15,6 +15,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { DialogComponentComponent } from './components/dialog-component/dialog-component.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { ListComponent } from './components/list/list.component';
@@ -26,7 +28,9 @@ import { CoreModule } from './core/core.module';
     AppComponent,
     ListComponent,
     ListCardComponent,
-    FilterComponent
+    FilterComponent,
+    DialogComponentComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
