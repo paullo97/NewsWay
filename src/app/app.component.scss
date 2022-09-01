@@ -20,31 +20,20 @@
     background-color: $primary;
     color: $white;
     font-weight: 600;
+
+    .space
+    {
+        flex: 1;
+    }
+
+    .button
+    {
+        margin-right: 2%;
+        cursor: pointer;
+    }
 }
 
 .toolbar img {
     margin: 0 16px;
     border-radius: 5px;
-}
-
-
-.container {
-    display: flex;
-    padding-top: 15px;
-    margin-top: 5%;
-
-    .empty-list {
-        margin: 15% 20%;
-    }
-
-    .spinner
-    {
-        margin-left: 30%;
-        margin-top: 10%;
-    }
-
-    ::ng-deep.mat-progress-spinner circle,
-    .mat-spinner circle {
-        stroke: $secondary;
-    }
 }

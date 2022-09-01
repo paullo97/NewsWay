@@ -5,7 +5,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
@@ -21,6 +20,8 @@ import { FilterComponent } from './components/filter/filter.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
 import { ListComponent } from './components/list/list.component';
 import { CoreModule } from './core/core.module';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { CoreModule } from './core/core.module';
     ListCardComponent,
     FilterComponent,
     DialogComponentComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FavoritesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,6 @@ import { CoreModule } from './core/core.module';
     MatRippleModule,
     MatDialogModule,
     MatInputModule,
-    MatIconModule,
     FormsModule,
     MatRadioModule,
     ReactiveFormsModule,

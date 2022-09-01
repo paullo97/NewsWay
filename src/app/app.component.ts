@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Article } from './core/services/models/response.model';
-import { loadNews } from './core/store/news/news.actions';
-import { getArticles, getNewsLoading } from './core/store/news/news.selectors';
-import { NewsStore } from './core/store/news/news.store';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -14,16 +9,28 @@ import { NewsStore } from './core/store/news/news.store';
 export class AppComponent
 {
     public title: string = 'Welcome to NewsWay - the new way to get news';
-    public loading$: Observable<boolean> = this.store.select(getNewsLoading);
-    public articles$: Observable<Array<Article>> = this.store.select(getArticles);
+    public titleBtn = '';
 
-    constructor(private store: Store<NewsStore>)
+    /**
+     * We're using the router to check if the current URL is equal to '/favorites'. If it is, we set the
+     * titleBtn to 'Back to Feed'. If it isn't, we set the titleBtn to 'See Favorites'
+     * @param {Router} router - Router - This is the Angular Router service.
+     */
+    constructor(private readonly router: Router)
     {
-        /** To the First Search, for the screen to have some content */
-        this.store.dispatch(loadNews({
-            request: {
-                q: 'Brasil'
-            }
-        }));
+        this.titleBtn = this.router.url === '/favorites' ? 'Back to Feed' : 'See Favorites' ;
+    }
+
+    /**
+     * If the current route is the root route, navigate to the favorites route, otherwise navigate to the
+     * root route
+     */
+    public goRoute(): void
+    {
+        this.router.url === '/'
+            ? this.router.navigateByUrl('/favorites')
+            : this.router.navigateByUrl('/');
+
+        this.titleBtn = this.router.url === '/' ? 'Back to Feed' : 'See Favorites';
     }
 }
