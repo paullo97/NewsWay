@@ -7,6 +7,13 @@ The initial idea is the Develop a SPA application for listing, filtering and ope
 
 <br>
 
+<b>⚠️ I am using the News API in this project, but it has been seen that it is only free in a local environment, that is, the fact that it is on github pages prevents the api from working properly and therefore the site will not be at 100% of its capacity. The [Demo](https://paullo97.github.io/NewsWay/) that is available has Mock data.⚠️
+<br><br>
+
+But you can clone this repository and run it locally it will work 100% 😉</b>
+
+<br>
+
 * This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5., but now using version 14.
 <br><br>
 
@@ -99,12 +106,5 @@ After this, wait process, if you use flag to open in browser, don't worry he ope
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 <br>
-<br>
 
-See demo in Github Pages [Here](https://paullo97.github.io/NewsWay/)
-
-<b>🚧 I am using News API in this project, but it has been seen that it is only free in a local environment, that is, the fact that it is on github pages prevents the api from working properly and therefore the site will not be able to look for the news. 🚧  <br><br>But you can clone that repository and run locally it will work 100% 😉</b>
-
-<br>
-
-Made With ❤️ by Paulo Cesar 👋🏽 [Contact](https://www.linkedin.com/in/paulo-cesar-537396139/)
+You can See demo in Github Pages [Here](https://paullo97.github.io/NewsWay/) - Made With ❤️ by Paulo Cesar 👋🏽 [Contact](https://www.linkedin.com/in/paulo-cesar-537396139/)
