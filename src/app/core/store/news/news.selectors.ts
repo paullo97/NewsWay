@@ -17,3 +17,8 @@ export const getLanguages = createSelector(
     getNewsState,
     (store: NewsStore) => store.languages
 );
+
+export const getFavorites = createSelector(
+    getNewsState,
+    (store: NewsStore) => store.favorites
+);
