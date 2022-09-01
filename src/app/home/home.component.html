@@ -1,0 +1,15 @@
+<div class="container">
+    <app-filter></app-filter>
+    <app-list
+        *ngIf="(loading$ | async) === false && ((articles$ | async) || []).length > 0"
+        [list]="(articles$ | async) || []">
+    </app-list>
+
+    <div class="spinner" *ngIf="(loading$ | async)">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="empty-list" *ngIf="(loading$ | async) === false && ((articles$ | async) || []).length === 0">
+        <p>Essa Pesquisa não houve retorno, por favor tente outro termo ou mude os filtros</p>
+    </div>
+</div>
