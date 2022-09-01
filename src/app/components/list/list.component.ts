@@ -41,7 +41,6 @@ export class ListComponent implements OnInit
     @HostListener('window:resize', ['$event'])
     public onResize(): void
     {
-        console.log('onResize');
         this.refreshHeaderHeight();
     }
 

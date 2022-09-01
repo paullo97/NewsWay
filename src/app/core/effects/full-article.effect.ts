@@ -10,11 +10,7 @@ export class FullArticleEffect
     getFullArticle$ = createEffect(() => this.actions$.pipe(
         ofType(loadFullArticle),
         switchMap(({ url }) => this.articleService.getFullArticle(url)),
-        map((response) =>
-        {
-            console.log(JSON.stringify(response));
-            return loadFullArticleSuccess();
-        }),
+        map((response) => loadFullArticleSuccess()),
         catchError(() => EMPTY)
     ));
 
