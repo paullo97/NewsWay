@@ -1,32 +1,38 @@
 @import '../../../assets/colors.scss';
 
-.dialog {
+.dialog
+{
     padding: 15px;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
 
-    .header {
+    .header
+    {
         display: flex;
         flex-direction: column;
         align-items: center;
 
 
-        img {
+        img
+        {
             border-radius: 15px;
             width: 100%;
         }
 
-        .title {
+        .title
+        {
             font-size: 30px;
             font-weight: 700;
         }
     }
 
-    .information {
+    .information
+    {
         justify-items: start;
         font-size: 10px;
 
-        p {
+        p
+        {
             padding: 2px;
             margin: 2px;
         }
@@ -39,7 +45,23 @@
 
     }
 
-    .content {
+    .add-favorite
+    {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        cursor: pointer;
+
+        .favorite
+        {
+            width: 15px;
+            height: 15px;
+            margin-left: 5px;
+        }
+    }
+
+    .content
+    {
         margin-top: 30px;
         font-size: 14px;
         text-indent: 5%;
@@ -52,5 +74,4 @@
             cursor: pointer;
         }
     }
-
 }
