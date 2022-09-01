@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, map, Observable, of } from 'rxjs';
-import { api, ApiKey } from 'src/environments/constants';
+import { delay, Observable, of } from 'rxjs';
 import { adapterContent } from '../adapter/content.adapter';
 import { languagesModel } from './models/language.model';
 import { RequestModel } from './models/request.model';
-import { Response } from './models/response.model';
+import { dataMock, Response } from './models/response.model';
 
 @Injectable()
 export class NewsService
@@ -24,20 +23,7 @@ export class NewsService
      */
     public getNews(request?: RequestModel): Observable<Response>
     {
-        return this.http.get<Response>(api.system.get({
-            apiKey: ApiKey,
-            q: request?.q || '',
-            pageSize: 100,
-            language: request?.language || 'pt',
-            ...(!!request?.searchIn && { searchIn: request.searchIn}),
-            ...(!!request?.from && { from: request.from }),
-            ...(!!request?.to && { to: request.to }),
-            ...(!!request?.sortBy && { sortBy: request.sortBy}),
-            ...(!!request?.domains && { domains: request.domains }),
-            ...(!!request?.excludeDomains && { excludeDomains: request.excludeDomains })
-        })).pipe(
-            map((response) => this.adapter.contentShort(response))
-        )
+        return of(dataMock).pipe(delay(1500));
     }
 
     /**
@@ -62,4 +48,62 @@ export class NewsService
             { value: 'zh', viewValue: 'Chinese' }
         ]).pipe(delay(1500));
     }
+
+    public filterArticles(request: RequestModel): Observable<Response>
+    {
+        let filteredData: Response = clone(dataMock);
+        const { q, domains, excludeDomains, from, to } = request;
+        if (q)
+        {
+            filteredData.articles = dataMock.articles.filter(({ title }) =>
+            {
+                return title.toLocaleLowerCase().includes(q.toLocaleLowerCase().replace(/["]+/g, ''))
+            });
+        }
+        if (domains)
+        {
+            filteredData.articles = filteredData.articles.filter((art) =>
+            {
+                if (art.url.includes(domains))
+                {
+                    return art;
+                }
+                return;
+            })
+        }
+        if (excludeDomains)
+        {
+            filteredData.articles = filteredData.articles.filter((art) =>
+            {
+                if (!art.url.includes(excludeDomains))
+                {
+                    return art;
+                }
+                return;
+            })
+        }
+        if (from)
+        {
+            filteredData.articles = filteredData.articles.filter(({ publishedAt }) =>
+            {
+                return new Date(publishedAt).getTime() >= new Date(from).getTime()
+            });
+        }
+        if (to)
+        {
+            filteredData.articles = filteredData.articles.filter(({ publishedAt }) =>
+            {
+                return new Date(publishedAt).getTime() <= new Date(to).getTime()
+            });
+        }
+        return of(filteredData).pipe(delay(1500));
+    }
+}
+
+
+export function clone<T>(obj: T): T
+{
+    return typeof obj === 'object'
+        ? JSON.parse(JSON.stringify(obj))
+        : obj;
 }

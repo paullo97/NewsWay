@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { languagesModel } from 'src/app/core/services/models/language.model';
 import { getLanguages, getNewsLoading } from 'src/app/core/store/news/news.selectors';
 import { NewsStore } from 'src/app/core/store/news/news.store';
-import { loadLanguages, loadNews } from './../../core/store/news/news.actions';
+import { filterArticles, loadLanguages } from './../../core/store/news/news.actions';
 
 @Component({
     selector: 'app-filter',
@@ -57,7 +57,7 @@ export class FilterComponent implements OnInit
 
         const {end, start} = this.range.value;
         /* Dispatching the loadNews action with the request object as a payload. */
-        this.store.dispatch(loadNews({
+        this.store.dispatch(filterArticles({
             request: {
                 q: this.keyString.split('').length > 1 ? '"' + this.keyString +'"' : this.keyString,
                 language: this.languageSelect,

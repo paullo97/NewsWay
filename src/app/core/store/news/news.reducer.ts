@@ -1,5 +1,5 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { loadLanguages, loadLanguagesSuccess, loadNews, loadNewsError, loadNewsSuccess, removeFavorite, saveFavorite } from './news.actions';
+import { filterArticles, loadLanguages, loadLanguagesSuccess, loadNews, loadNewsError, loadNewsSuccess, removeFavorite, saveFavorite } from './news.actions';
 import { NewsStore } from './news.store';
 
 export const initialState: Partial<NewsStore> = {
@@ -38,6 +38,10 @@ const reducer: ActionReducer<Partial<NewsStore>, Action> = createReducer(
     on(removeFavorite, (state, action) => ({
         ...state,
         favorites: state.favorites?.filter((fav) => fav.url !== action.article?.url)
+    })),
+    on(filterArticles, (state) => ({
+        ...state,
+        loading: true
     }))
 );
 

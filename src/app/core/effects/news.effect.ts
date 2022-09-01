@@ -6,7 +6,7 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { languagesModel } from '../services/models/language.model';
 import { Response } from '../services/models/response.model';
 import { NewsService } from '../services/news.service';
-import { loadLanguagesSuccess, loadNews, loadNewsSuccess } from '../store/news/news.actions';
+import { filterArticles, loadLanguagesSuccess, loadNews, loadNewsSuccess } from '../store/news/news.actions';
 import { loadLanguages, removeFavorite, saveFavorite } from './../store/news/news.actions';
 
 @Injectable()
@@ -42,6 +42,13 @@ export class NewsEffect
             this._snackBar.open('Article Remove to your Favorites', 'OK', {duration: 3000});
         })
     ), {dispatch: false});
+
+    filterArticles$ = createEffect(() => this.actions$.pipe(
+        ofType(filterArticles),
+        switchMap((response) => this.service.filterArticles(response.request)),
+        map((articles: Response) => loadNewsSuccess({ articles })),
+        catchError(() => EMPTY)
+    ));
 
     constructor(
         private readonly actions$: Actions,

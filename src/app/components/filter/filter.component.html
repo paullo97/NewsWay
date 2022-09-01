@@ -5,13 +5,6 @@
         <input matInput placeholder="Ex. Apple" [(ngModel)]="keyString">
     </mat-form-field>
 
-    <label>SearchIn</label>
-    <section class="searchIn">
-        <mat-checkbox [(ngModel)]="titleEnable">title</mat-checkbox>
-        <mat-checkbox [(ngModel)]="contentEnable">content</mat-checkbox>
-        <mat-checkbox [(ngModel)]="descriptionEnable">description</mat-checkbox>
-    </section>
-
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>domains</mat-label>
         <input matInput placeholder="Ex. https://www.discoverybrasil.com/" [(ngModel)]="domains">
@@ -35,22 +28,6 @@
         <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
         <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
     </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Languages</mat-label>
-        <mat-select required [(ngModel)]="languageSelect">
-            <mat-option *ngFor="let lg of (languages$ | async)" [value]="lg.value">
-                {{lg.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <label>Sort By</label>
-    <mat-radio-group aria-label="Sort By" class="sort-by" [(ngModel)]="sortBy">
-        <mat-radio-button value="publishedAt">Published At</mat-radio-button>
-        <mat-radio-button value="relevancy">Relevancy</mat-radio-button>
-        <mat-radio-button value="popularity">Popularity</mat-radio-button>
-    </mat-radio-group>
 
     <div class="spinner" *ngIf="(loading$ | async)">
         <mat-spinner [diameter]="50"></mat-spinner>

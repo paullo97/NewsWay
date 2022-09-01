@@ -45,3 +45,11 @@ export const removeFavorite = createAction(
         article: Article | undefined;
     }>()
 );
+
+/** Action to Filter */
+export const filterArticles = createAction(
+    `${storeTag} Filter Articles`,
+    props<{
+        request: RequestModel;
+    }>()
+);
