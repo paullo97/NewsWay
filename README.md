@@ -103,7 +103,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 See demo in Github Pages [Here](https://paullo97.github.io/NewsWay/)
 
-<b>I am using News API in this project, but it has been seen that it is only free in a local environment, that is, the fact that it is on github pages prevents the api from working properly and therefore the site will not be able to look for the news. But you can clone that repository and run locally it will work 100% 😉</b>
+<b>🚧 I am using News API in this project, but it has been seen that it is only free in a local environment, that is, the fact that it is on github pages prevents the api from working properly and therefore the site will not be able to look for the news. 🚧  <br><br>But you can clone that repository and run locally it will work 100% 😉</b>
 
 <br>
 
