@@ -37,7 +37,7 @@ To run project you need some tools, the information and links available in this 
 
 ## Step One
 
-Clone to this repository in your computer. To do this run the following command `git clone https://github.com/paullo97/NewsWay.git`
+In your Terminal, Clone to this repository in your computer. To do this run the following command on Terminal `git clone https://github.com/paullo97/NewsWay.git`
 
 ```bash
 # Clone this repository
