@@ -4,7 +4,6 @@
 
 The initial idea is the Develop a SPA application for listing, filtering and opening news profiles from the API of your choice (see suggestions below). The application must list the first 100 records of the entity and organize it in a clickable list, allowing you to filter based on the existing fields of the entity. After the listing, it should be possible to click on one of the items in the list and render the content of the article within the APP itself. You are free to choose the best way to display this content.
 
-#
 
 <br>
 
@@ -21,6 +20,7 @@ Tecnologys and Tools used to build projecct
 * [NGRX](https://ngrx.io/)
 * [Angular Material](https://material.angular.io/)
 * [GIT](https://git-scm.com/)
+* [NEWS API](https://newsapi.org/)
 
 <br>
 
@@ -101,5 +101,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 <br>
 <br>
 
-See demo in Github Pages ->
+See demo in Github Pages [Here](https://paullo97.github.io/NewsWay/)
+
+<b>🚧 I am using News API in this project, but it has been seen that it is only free in a local environment, that is, the fact that it is on github pages prevents the api from working properly and therefore the site will not be able to look for the news. 🚧  <br><br>But you can clone that repository and run locally it will work 100% 😉</b>
+
+<br>
+
 Made With ❤️ by Paulo Cesar 👋🏽 [Contact](https://www.linkedin.com/in/paulo-cesar-537396139/)
