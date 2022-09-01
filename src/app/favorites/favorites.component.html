@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Favorite List</h1>
+    <app-list
+        *ngIf="((articles$ | async) || []).length > 0"
+        [list]="(articles$ | async) || []">
+    </app-list>
+
+    <div
+        class="empty-list"
+        *ngIf="((articles$ | async) || []).length === 0">
+        <p>Você ainda não tem Favoritos. Você pode retornar ao Feed e adicionar Artigos para ver aqui depois</p>
+    </div>
+</div>
