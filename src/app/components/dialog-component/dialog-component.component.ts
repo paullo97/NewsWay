@@ -15,7 +15,7 @@ import { removeFavorite, saveFavorite } from './../../core/store/news/news.actio
 })
 export class DialogComponentComponent implements OnInit
 {
-    public article: Article;
+    public article: Article | undefined;
     public titleFavorite: string = 'Add';
 
     constructor(
@@ -24,12 +24,11 @@ export class DialogComponentComponent implements OnInit
         private dialog: MatDialog,
         private router: Router
     )
-    {
-        this.article = this.data;
-    }
+    { }
 
     public ngOnInit(): void
     {
+        this.article = this.data;
         this.store.dispatch(loadFullArticle({ url: this.article?.url || '' }));
         this.titleFavorite = this.router.url === '/' ? 'Add' : 'Remove';
     }

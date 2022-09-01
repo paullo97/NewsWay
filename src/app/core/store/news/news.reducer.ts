@@ -33,11 +33,11 @@ const reducer: ActionReducer<Partial<NewsStore>, Action> = createReducer(
     })),
     on(saveFavorite, (state, action) => ({
         ...state,
-        favorites: (state.favorites?.filter((fav) => fav.url === action.article.url) || []).length === 1 ? state.favorites : state.favorites?.concat(action.article)
+        favorites: (state.favorites?.filter((fav) => fav.url === action.article?.url) || []).length === 1 ? state.favorites : state.favorites?.concat(action.article || [])
     })),
     on(removeFavorite, (state, action) => ({
         ...state,
-        favorites: state.favorites?.filter((fav) => fav.url !== action.article.url)
+        favorites: state.favorites?.filter((fav) => fav.url !== action.article?.url)
     }))
 );
 

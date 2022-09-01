@@ -36,12 +36,12 @@ export const loadLanguagesSuccess = createAction(
 export const saveFavorite = createAction(
     `${storeTag} Save on Favorites`,
     props<{
-        article: Article;
+        article: Article | undefined;
     }>()
 );
 export const removeFavorite = createAction(
     `${storeTag} Save on FAvorites`,
     props<{
-        article: Article;
+        article: Article | undefined;
     }>()
 );

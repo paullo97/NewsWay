@@ -1,14 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { Article } from 'src/app/core/services/models/response.model';
 
 import { DialogComponentComponent } from './dialog-component.component';
 
 describe('DialogComponentComponent', () =>
 {
-    const article: Article | undefined = undefined;
+    const titleFavorite = '';
+    const article = '';
     let component: DialogComponentComponent;
     let fixture: ComponentFixture<DialogComponentComponent>;
 
@@ -22,7 +23,8 @@ describe('DialogComponentComponent', () =>
             providers: [
                 { provide: MatDialog, useValue: undefined },
                 { provide: MAT_DIALOG_DATA, useValue: undefined },
-                { provide: Store }
+                { provide: Store},
+                { provide: MatSnackBar, useValue: undefined}
             ]
         })
             .compileComponents();
